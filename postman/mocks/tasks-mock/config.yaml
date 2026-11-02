@@ -1,0 +1,14 @@
+version: 1
+id: 32e77cdd-3d80-4643-b9fb-9d5eed2e7bbf
+name: Tasks Mock
+slug: tasks-mock
+protocol: http
+port: 4010
+scenarios:
+  - name: default
+    path: ./default.js
+    default: true
+generatedFrom:
+  type: spec
+  mode: static
+  path: ../../../openapi.yaml
