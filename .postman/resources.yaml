@@ -1,0 +1,6 @@
+localResources:
+  specs:
+    - ../openapi.yaml
+workspace:
+  id: 61f65e58-182c-43d9-8d99-d13573a58ec7
+  name: DannyDainton/postman-terminal-demo
