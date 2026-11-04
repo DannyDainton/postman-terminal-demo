@@ -8,6 +8,7 @@ scenarios:
   - name: default
     path: ./default.js
     default: true
+    id: 01a19ccc-12c7-755f-b770-a0b5a068a4db
 generatedFrom:
   type: spec
   mode: static

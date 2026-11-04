@@ -1,3 +1,12 @@
+cloudResources:
+  collections:
+    ../postman/collections/Tasks API: 8213448-3edcf5c6-80f3-4bed-90b0-1f7f271fd1b7
+  environments:
+    ../postman/environments/Local.environment.yaml: 8213448-da47d726-a2e5-4876-8b31-baa22c0c2608
+  mocks:
+    ../postman/mocks/tasks-mock/config.yaml: 32e77cdd-3d80-4643-b9fb-9d5eed2e7bbf
+  specs:
+    ../openapi.yaml: 7be2faa2-3381-497b-972e-f3aac0bfbecc
 localResources:
   specs:
     - ../openapi.yaml
