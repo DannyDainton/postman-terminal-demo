@@ -35,7 +35,7 @@ const server = http.createServer((req, res) => {
 
     // "Created" — default
     res.writeHead(201, {"Content-Type":"application/json"});
-    return res.end(JSON.stringify({"id":"string","title":"string","done":true}));
+    return res.end(JSON.stringify({"id":"string","title":"string","done":false}));
   }
 
   // @endpoint GET /tasks/:taskId
@@ -50,7 +50,22 @@ const server = http.createServer((req, res) => {
 
     // "OK" — default
     res.writeHead(200, {"Content-Type":"application/json"});
-    return res.end(JSON.stringify({"id":"string","title":"string","done":true}));
+    return res.end(JSON.stringify({"id":"string","title":"string","done":false}));
+  }
+
+  // @endpoint DELETE /tasks/:taskId
+  if (req.method === 'DELETE' && /^\/tasks\/([^/]+)$/.test(pathname)) {
+    const requestedStatusCode = req.headers['x-mock-response-code'];
+
+    // "No task exists with the supplied `taskId`." — when x-mock-response-code: 404
+    if (requestedStatusCode === '404') {
+      res.writeHead(404, {"Content-Type":"application/json"});
+      return res.end(JSON.stringify({"message":"string"}));
+    }
+
+    // "The task was deleted. No content is returned." — default
+    res.writeHead(204, {"Content-Type":"text/plain"});
+    return res.end("");
   }
 
   res.writeHead(404, { 'Content-Type': 'application/json' });
