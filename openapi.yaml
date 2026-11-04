@@ -73,6 +73,26 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+    delete:
+      operationId: deleteTask
+      summary: Delete a task
+      description: Permanently deletes the task identified by its id. Returns no content on success.
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          description: The unique identifier of the task.
+          schema:
+            type: string
+      responses:
+        "204":
+          description: The task was deleted. No content is returned.
+        "404":
+          description: No task exists with the supplied `taskId`.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     NewTask:
