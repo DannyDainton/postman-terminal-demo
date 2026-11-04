@@ -28,7 +28,7 @@ paths:
     post:
       operationId: createTask
       summary: Create a task
-      description: Creates a task from the supplied title and returns the created task, including its generated id.
+      description: Creates a task from the supplied name and returns the created task, including its generated id.
       requestBody:
         required: true
         content:
@@ -43,7 +43,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Task"
         "400":
-          description: The request body is malformed or is missing the required `title`.
+          description: The request body is malformed or is missing the required `name`.
           content:
             application/json:
               schema:
@@ -97,9 +97,9 @@ components:
   schemas:
     NewTask:
       type: object
-      required: [title]
+      required: [name]
       properties:
-        title:
+        name:
           type: string
     Task:
       type: object
