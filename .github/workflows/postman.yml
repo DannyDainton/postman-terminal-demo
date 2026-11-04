@@ -1,0 +1,30 @@
+name: Postman
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  spec-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Install the Postman CLI
+        run: curl -o- "https://dl-cli.pstmn.io/install/unix.sh" | sh
+
+      - name: Log in to Postman
+        env:
+          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+        run: postman login --with-api-key "$POSTMAN_API_KEY"
+
+      - name: Lint the spec
+        run: postman spec lint openapi.yaml --workspace-id 61f65e58-182c-43d9-8d99-d13573a58ec7 -f error --no-report-events
+
+      - name: Check AI readiness
+        run: postman spec ai-readiness openapi.yaml --min-score 70
